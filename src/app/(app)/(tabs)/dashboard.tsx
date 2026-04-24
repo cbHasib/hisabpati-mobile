@@ -19,6 +19,7 @@ import AddIncomeForm from '@/src/components/screen/income/AddIncomeForm';
 import AddTransferForm from '@/src/components/screen/transfer/AddTransferForm';
 import { COLORS, FONT_SIZE, SPACING, RADIUS } from '@/src/theme/theme.config';
 import { formatRelativeDate, formatCurrency } from '@/src/utils/formatters';
+import TabsHeader from '@/src/components/ui/TabsHeader';
 
 type ModalType = 'expense' | 'income' | 'transfer' | null;
 
@@ -37,19 +38,7 @@ export default function DashboardScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.background }}>
       {/* Header */}
-      <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
-        <View>
-          <Text style={styles.greeting}>Good {getGreeting()} 👋</Text>
-          <Text style={styles.userName}>{user?.name?.split(' ')[0] ?? 'User'}</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <View style={[styles.badge, { backgroundColor: getBadgeColor(user?.package ?? 'free') + '20' }]}>
-            <Text style={[styles.badgeText, { color: getBadgeColor(user?.package ?? 'free') }]}>
-              {(user?.package ?? 'Free').charAt(0).toUpperCase() + (user?.package ?? 'free').slice(1)}
-            </Text>
-          </View>
-        </View>
-      </View>
+      <TabsHeader route={{ name: 'dashboard' }} options={{ title: 'Dashboard' }} />
 
       <ScrollView
         contentContainerStyle={[styles.scroll, { paddingBottom: insets.bottom + 90 }]}

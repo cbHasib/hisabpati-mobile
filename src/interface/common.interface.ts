@@ -115,3 +115,17 @@ export interface IDashboard {
   expenseByCategory: { name: string; amount: number }[];
   incomeByCategory: { name: string; amount: number }[];
 }
+
+export type NotificationType = 'expense' | 'income' | 'transfer' | 'loan' | 'system' | 'reminder';
+
+export interface INotification {
+  _id: string;
+  title: string;
+  message: string;
+  type: NotificationType;
+  isRead: boolean;
+  user: string;
+  createdAt: string;
+  updatedAt: string;
+  meta?: Record<string, unknown>;
+}

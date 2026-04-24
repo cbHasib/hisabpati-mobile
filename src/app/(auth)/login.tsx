@@ -19,9 +19,11 @@ import Button from '@/src/components/ui/Button';
 import { loginSchema, LoginFormData } from '@/src/utils/validation';
 import { useLoginMutation } from '@/src/redux/features/auth/authApi';
 import { COLORS, FONT_SIZE, SPACING, RADIUS } from '@/src/theme/theme.config';
+import { useAppSelector } from '@/src/redux/hooks';
 
 export default function LoginScreen() {
   const router = useRouter();
+  const { lastLoginEmail } = useAppSelector((state) => state.auth);
   const insets = useSafeAreaInsets();
   const [login, { isLoading }] = useLoginMutation();
 
@@ -75,6 +77,7 @@ export default function LoginScreen() {
             autoComplete="email"
             leftIcon="mail-outline"
             error={errors.email?.message}
+            defaultValue={lastLoginEmail ?? ''}
           />
           <ControlledTextInput
             control={control}
