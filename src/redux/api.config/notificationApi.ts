@@ -9,7 +9,7 @@ export const notificationApi = baseApi.injectEndpoints({
       providesTags: [CACHE_TAGS.NOTIFICATIONS],
     }),
     getNotification: builder.query<{ success: boolean; data: INotification }, string>({
-      query: (id) => `${API_ENDPOINTS.NOTIFICATION.BASE}${id}`,
+      query: (id) => API_ENDPOINTS.NOTIFICATION.GET_SINGLE(id),
       providesTags: [CACHE_TAGS.NOTIFICATIONS],
     }),
     markNotificationRead: builder.mutation<{ success: boolean }, string>({

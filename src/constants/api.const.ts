@@ -48,5 +48,6 @@ export const API_ENDPOINTS = {
   },
   NOTIFICATION: {
     BASE: '/notification/',
+    GET_SINGLE: (id: string) => `/notification/get-single/${id}`,
   },
 } as const;
